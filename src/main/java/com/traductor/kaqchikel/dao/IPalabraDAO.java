@@ -7,5 +7,6 @@ import java.util.List;
 public interface IPalabraDAO {
     Palabra buscarTermino(Palabra palabra);
     List<Palabra> listarPalabra();
+    List<Palabra> filtrarListaPorLetra(Palabra filtrarPalabra);
     
 }

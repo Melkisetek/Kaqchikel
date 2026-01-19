@@ -42,19 +42,19 @@ public class PalabraDAOimpl implements IPalabraDAO {
     }
 
     @Override
-    public Palabra buscarTermino(Palabra palabra) {
+    public Palabra buscarTermino(Palabra palabraBuscar) {
         PreparedStatement ps;
         ResultSet rs;
         var con = ConexionSQLite.getConexion();
-        var sql = "SELECT * FROM traduccion WHERE texto_espanol = ?";
+        var sql = "SELECT * FROM traduccion WHERE LOWER(texto_espanol) LIKE  LOWER(?)"; // insensible a mayúsculas/minúsculas
         try {
             ps = con.prepareStatement(sql);
-            ps.setString(1, palabra.getEspañol());
+            ps.setString(1, palabraBuscar.getEspañol());
             rs = ps.executeQuery();
             //si hay registro
             if (rs.next()) {
-                palabra.setEspañol(rs.getString("texto_espanol"));
-                palabra.setKaqchikel(rs.getString("texto_kaqchikel"));
+                palabraBuscar.setEspañol(rs.getString("texto_espanol"));
+                palabraBuscar.setKaqchikel(rs.getString("texto_kaqchikel"));
             }
         } catch (Exception e) {
             System.out.println("Error al recuperar cliente:  " + e.getMessage());
@@ -66,7 +66,39 @@ public class PalabraDAOimpl implements IPalabraDAO {
             }
         }
 
-        return palabra;
+        return palabraBuscar;
+    }
+    
+    @Override
+    public List<Palabra> filtrarListaPorLetra(Palabra filtrar){
+        List<Palabra> listaFiltrada = new ArrayList<>();
+        PreparedStatement ps;
+        ResultSet rs;
+        Connection con = ConexionSQLite.getConexion();
+        String sql = "SELECT * FROM traduccion WHERE texto_espanol GLOB ? ORDER BY id ASC";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, filtrar.getEspañol()); // Regex*
+            rs = ps.executeQuery();
+            while (rs.next()) {                
+                Palabra lista = new Palabra();
+                lista.setId(rs.getInt("id"));
+                lista.setEspañol(rs.getString("texto_espanol"));
+                lista.setKaqchikel(rs.getString("texto_kaqchikel"));
+                // agrar a la lista
+                listaFiltrada.add(lista);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al filtrar la lista: "+e.getMessage());
+        }finally{
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println("Error al cerrar conexión: "+ex.getMessage());
+            }
+        }
+        
+        return listaFiltrada;
     }
 
     public static void main(String[] args) {
@@ -77,15 +109,25 @@ public class PalabraDAOimpl implements IPalabraDAO {
 //        palabras.forEach(System.out::println);
 
         // Busqueda por nombre
-        var palabra = new Palabra("Abeja");
-        System.out.println("Palabra antes de la busqueda: " + palabra);
-        var encontrado = palabraDao.buscarTermino(palabra);
+//        var palabra = new Palabra("Abeja");
+//        System.out.println("Palabra antes de la busqueda: " + palabra);
+//        var encontrado = palabraDao.buscarTermino(palabra);
+//
+//        if (encontrado.getKaqchikel() != null) {
+//            System.out.println("Palabra encontrado: " + palabra);
+//        } else {
+//            System.out.println("NO SE ENCONTRO: " + palabra.getEspañol());
+//        }
 
-        if (encontrado.getKaqchikel() != null) {
-            System.out.println("Palabra encontrado: " + palabra);
-        } else {
-            System.out.println("NO SE ENCONTRO: " + palabra.getEspañol());
-        }
+        // *** filtrarListaPorLetra  ***
+//        String regex = "[R]*";
+//        Palabra palabra = new Palabra(regex);
+//        var filtrarPalabraLista = palabraDao.filtrarListaPorLetra(palabra);
+//        if (palabra.getEspañol().isEmpty()) {
+//            System.out.println("Cadena vacía, ingrese una letra");
+//            return;
+//        }
+//        filtrarPalabraLista.forEach(System.out::println);
     }
 
 }

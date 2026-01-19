@@ -4,4 +4,5 @@
 /home/melquisedec/Documentos/Proyectos/Kaqchikel/src/main/java/com/traductor/kaqchikel/model/Palabra.java
 /home/melquisedec/Documentos/Proyectos/Kaqchikel/src/main/java/com/traductor/kaqchikel/ui/MainGUI.java
 /home/melquisedec/Documentos/Proyectos/Kaqchikel/src/main/java/com/traductor/kaqchikel/dao/IPalabraDAO.java
+/home/melquisedec/Documentos/Proyectos/Kaqchikel/src/main/java/com/traductor/kaqchikel/controller/FiltrarPalabra.java
 /home/melquisedec/Documentos/Proyectos/Kaqchikel/src/main/java/com/traductor/kaqchikel/controller/DiccionarioController.java

@@ -1,12 +1,11 @@
 package com.traductor.kaqchikel.ui;
 
 import com.traductor.kaqchikel.controller.DiccionarioController;
-import com.traductor.kaqchikel.dao.IPalabraDAO;
-import com.traductor.kaqchikel.dao.PalabraDAOimpl;
-import com.traductor.kaqchikel.model.Palabra;
-import javax.swing.JOptionPane;
+import com.traductor.kaqchikel.controller.FiltrarPalabra;
+import javax.swing.JButton;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public final class MainGUI extends javax.swing.JFrame {
 
@@ -17,6 +16,7 @@ public final class MainGUI extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         DiccionarioController diccionarioController = new DiccionarioController(this);
+        FiltrarPalabra filtrarPalabra = new FiltrarPalabra(this);
     }
 
     /**
@@ -29,40 +29,41 @@ public final class MainGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnTraduccir = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
         txtField = new javax.swing.JTextField();
+        btnTraduccir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
-        jButton20 = new javax.swing.JButton();
-        jButton21 = new javax.swing.JButton();
-        jButton22 = new javax.swing.JButton();
-        jButton23 = new javax.swing.JButton();
-        jButton24 = new javax.swing.JButton();
-        jButton25 = new javax.swing.JButton();
-        jButton26 = new javax.swing.JButton();
+        btnZ = new javax.swing.JButton();
+        btnA = new javax.swing.JButton();
+        btnB = new javax.swing.JButton();
+        btnC = new javax.swing.JButton();
+        btnD = new javax.swing.JButton();
+        btnE = new javax.swing.JButton();
+        btnF = new javax.swing.JButton();
+        btnG = new javax.swing.JButton();
+        btnH = new javax.swing.JButton();
+        btnI = new javax.swing.JButton();
+        btnJ = new javax.swing.JButton();
+        btnK = new javax.swing.JButton();
+        btnL = new javax.swing.JButton();
+        btnM = new javax.swing.JButton();
+        btnN = new javax.swing.JButton();
+        btnO = new javax.swing.JButton();
+        btnP = new javax.swing.JButton();
+        btnQ = new javax.swing.JButton();
+        btnR = new javax.swing.JButton();
+        btnS = new javax.swing.JButton();
+        btnT = new javax.swing.JButton();
+        btnU = new javax.swing.JButton();
+        btnV = new javax.swing.JButton();
+        btnW = new javax.swing.JButton();
+        btnX = new javax.swing.JButton();
+        btnY = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -72,6 +73,22 @@ public final class MainGUI extends javax.swing.JFrame {
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnLimpiar.setText("LIMPIAR");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 90, 46));
+
+        txtField.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        txtField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFieldActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 289, 46));
+
         btnTraduccir.setText("TRADUCIR");
         btnTraduccir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,20 +97,13 @@ public final class MainGUI extends javax.swing.JFrame {
         });
         jPanel1.add(btnTraduccir, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 114, 46));
 
-        txtField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFieldActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 289, 46));
-
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 1080, 100));
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtArea.setEditable(false);
         txtArea.setColumns(20);
-        txtArea.setFont(new java.awt.Font("Liberation Sans", 0, 20)); // NOI18N
+        txtArea.setFont(new java.awt.Font("Liberation Sans", 0, 25)); // NOI18N
         txtArea.setRows(5);
         txtArea.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jScrollPane1.setViewportView(txtArea);
@@ -129,265 +139,265 @@ public final class MainGUI extends javax.swing.JFrame {
         jPanel3.setVerifyInputWhenFocusTarget(false);
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Z");
-        jButton1.setToolTipText("");
-        jButton1.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnZ.setText("Z");
+        btnZ.setToolTipText("");
+        btnZ.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnZ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnZActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 10, 40, -1));
+        jPanel3.add(btnZ, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 10, 40, -1));
 
-        jButton2.setText("A");
-        jButton2.setToolTipText("");
-        jButton2.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnA.setText("A");
+        btnA.setToolTipText("");
+        btnA.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 40, -1));
+        jPanel3.add(btnA, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 40, -1));
 
-        jButton3.setText("B");
-        jButton3.setToolTipText("");
-        jButton3.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnB.setText("B");
+        btnB.setToolTipText("");
+        btnB.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnBActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 40, -1));
+        jPanel3.add(btnB, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 40, -1));
 
-        jButton4.setText("C");
-        jButton4.setToolTipText("");
-        jButton4.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnC.setText("C");
+        btnC.setToolTipText("");
+        btnC.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnCActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 40, -1));
+        jPanel3.add(btnC, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 40, -1));
 
-        jButton5.setText("D");
-        jButton5.setToolTipText("");
-        jButton5.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnD.setText("D");
+        btnD.setToolTipText("");
+        btnD.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnDActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 40, -1));
+        jPanel3.add(btnD, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 40, -1));
 
-        jButton6.setText("E");
-        jButton6.setToolTipText("");
-        jButton6.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnE.setText("E");
+        btnE.setToolTipText("");
+        btnE.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnEActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 40, -1));
+        jPanel3.add(btnE, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 40, -1));
 
-        jButton7.setText("F");
-        jButton7.setToolTipText("");
-        jButton7.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnF.setText("F");
+        btnF.setToolTipText("");
+        btnF.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnFActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 40, -1));
+        jPanel3.add(btnF, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 40, -1));
 
-        jButton8.setText("G");
-        jButton8.setToolTipText("");
-        jButton8.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        btnG.setText("G");
+        btnG.setToolTipText("");
+        btnG.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                btnGActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 40, -1));
+        jPanel3.add(btnG, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 40, -1));
 
-        jButton9.setText("H");
-        jButton9.setToolTipText("");
-        jButton9.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        btnH.setText("H");
+        btnH.setToolTipText("");
+        btnH.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                btnHActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 40, -1));
+        jPanel3.add(btnH, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 40, -1));
 
-        jButton10.setText("I");
-        jButton10.setToolTipText("");
-        jButton10.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        btnI.setText("I");
+        btnI.setToolTipText("");
+        btnI.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                btnIActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 40, -1));
+        jPanel3.add(btnI, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 40, -1));
 
-        jButton11.setText("J");
-        jButton11.setToolTipText("");
-        jButton11.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        btnJ.setText("J");
+        btnJ.setToolTipText("");
+        btnJ.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnJ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                btnJActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 40, -1));
+        jPanel3.add(btnJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 40, -1));
 
-        jButton12.setText("K");
-        jButton12.setToolTipText("");
-        jButton12.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
+        btnK.setText("K");
+        btnK.setToolTipText("");
+        btnK.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+                btnKActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, 40, -1));
+        jPanel3.add(btnK, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, 40, -1));
 
-        jButton13.setText("L");
-        jButton13.setToolTipText("");
-        jButton13.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
+        btnL.setText("L");
+        btnL.setToolTipText("");
+        btnL.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
+                btnLActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 40, -1));
+        jPanel3.add(btnL, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 40, -1));
 
-        jButton14.setText("M");
-        jButton14.setToolTipText("");
-        jButton14.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
+        btnM.setText("M");
+        btnM.setToolTipText("");
+        btnM.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
+                btnMActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, 40, -1));
+        jPanel3.add(btnM, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, 40, -1));
 
-        jButton15.setText("N");
-        jButton15.setToolTipText("");
-        jButton15.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
+        btnN.setText("N");
+        btnN.setToolTipText("");
+        btnN.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
+                btnNActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 40, -1));
+        jPanel3.add(btnN, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 40, -1));
 
-        jButton16.setText("O");
-        jButton16.setToolTipText("");
-        jButton16.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton16.addActionListener(new java.awt.event.ActionListener() {
+        btnO.setText("O");
+        btnO.setToolTipText("");
+        btnO.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnO.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton16ActionPerformed(evt);
+                btnOActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, 40, -1));
+        jPanel3.add(btnO, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, 40, -1));
 
-        jButton17.setText("P");
-        jButton17.setToolTipText("");
-        jButton17.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton17.addActionListener(new java.awt.event.ActionListener() {
+        btnP.setText("P");
+        btnP.setToolTipText("");
+        btnP.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton17ActionPerformed(evt);
+                btnPActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, 40, -1));
+        jPanel3.add(btnP, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, 40, -1));
 
-        jButton18.setText("Q");
-        jButton18.setToolTipText("");
-        jButton18.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton18.addActionListener(new java.awt.event.ActionListener() {
+        btnQ.setText("Q");
+        btnQ.setToolTipText("");
+        btnQ.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnQ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton18ActionPerformed(evt);
+                btnQActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, 40, -1));
+        jPanel3.add(btnQ, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, 40, -1));
 
-        jButton19.setText("R");
-        jButton19.setToolTipText("");
-        jButton19.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton19.addActionListener(new java.awt.event.ActionListener() {
+        btnR.setText("R");
+        btnR.setToolTipText("");
+        btnR.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton19ActionPerformed(evt);
+                btnRActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, 40, -1));
+        jPanel3.add(btnR, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, 40, -1));
 
-        jButton20.setText("S");
-        jButton20.setToolTipText("");
-        jButton20.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton20.addActionListener(new java.awt.event.ActionListener() {
+        btnS.setText("S");
+        btnS.setToolTipText("");
+        btnS.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton20ActionPerformed(evt);
+                btnSActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, 40, -1));
+        jPanel3.add(btnS, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, 40, -1));
 
-        jButton21.setText("T");
-        jButton21.setToolTipText("");
-        jButton21.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton21.addActionListener(new java.awt.event.ActionListener() {
+        btnT.setText("T");
+        btnT.setToolTipText("");
+        btnT.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton21ActionPerformed(evt);
+                btnTActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 10, 40, -1));
+        jPanel3.add(btnT, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 10, 40, -1));
 
-        jButton22.setText("U");
-        jButton22.setToolTipText("");
-        jButton22.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton22.addActionListener(new java.awt.event.ActionListener() {
+        btnU.setText("U");
+        btnU.setToolTipText("");
+        btnU.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton22ActionPerformed(evt);
+                btnUActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, 40, -1));
+        jPanel3.add(btnU, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, 40, -1));
 
-        jButton23.setText("V");
-        jButton23.setToolTipText("");
-        jButton23.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton23.addActionListener(new java.awt.event.ActionListener() {
+        btnV.setText("V");
+        btnV.setToolTipText("");
+        btnV.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton23ActionPerformed(evt);
+                btnVActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton23, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 10, 40, -1));
+        jPanel3.add(btnV, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 10, 40, -1));
 
-        jButton24.setText("W");
-        jButton24.setToolTipText("");
-        jButton24.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton24.addActionListener(new java.awt.event.ActionListener() {
+        btnW.setText("W");
+        btnW.setToolTipText("");
+        btnW.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnW.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton24ActionPerformed(evt);
+                btnWActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton24, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 10, 40, -1));
+        jPanel3.add(btnW, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 10, 40, -1));
 
-        jButton25.setText("X");
-        jButton25.setToolTipText("");
-        jButton25.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton25.addActionListener(new java.awt.event.ActionListener() {
+        btnX.setText("X");
+        btnX.setToolTipText("");
+        btnX.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnX.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton25ActionPerformed(evt);
+                btnXActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton25, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, 40, -1));
+        jPanel3.add(btnX, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, 40, -1));
 
-        jButton26.setText("Y");
-        jButton26.setToolTipText("");
-        jButton26.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton26.addActionListener(new java.awt.event.ActionListener() {
+        btnY.setText("Y");
+        btnY.setToolTipText("");
+        btnY.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnY.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton26ActionPerformed(evt);
+                btnYActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton26, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 10, 40, -1));
+        jPanel3.add(btnY, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 10, 40, -1));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 1070, 60));
 
@@ -409,141 +419,245 @@ public final class MainGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnTraduccirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraduccirActionPerformed
-        IPalabraDAO buscarPalabra = new PalabraDAOimpl();
-        String palabraEsp = txtField.getText();
-        Palabra palabra = new Palabra(palabraEsp);
-        var encontrado = buscarPalabra.buscarTermino(palabra);
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        txtArea.setText("");
+        txtField.setText("");
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
-        if (encontrado.getKaqchikel() != null) {
-            txtArea.setText(palabra.toString());
-        } else {
-            JOptionPane.showMessageDialog(null, "No se encontro la Palabra: " + palabra.getEspañol());
-        }
-
-    }//GEN-LAST:event_btnTraduccirActionPerformed
-
-    public void cargarDatosTabla(){
-            jTable1.setModel(new DefaultTableModel(
-                new Object[][]{},
-                new String[]{"ID", "Español", "Kaqchikel"}
-        ));
-    }
-    
-
-    
     private void txtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldActionPerformed
 
 
     }//GEN-LAST:event_txtFieldActionPerformed
 
-    public JTable getTabla(){
+    // Getters  (muy importante) 
+    public JTable getTabla() {
         return jTable1;
     }
-    
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    public JTextField getTxtBuscar() {
+        return txtField;
+    }
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    public JButton getBtnBuscar() {
+        return btnTraduccir;
+    }
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    public JTextArea getTextArea() {
+        return txtArea;
+    }
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    // A-Z
+    public JButton getJButtonA() {
+        return btnA;
+    }
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    public JButton getJButtonB() {
+        return btnB;
+    }
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    public JButton getJButtonC() {
+        return btnC;
+    }
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    public JButton getJButtonD() {
+        return btnD;
+    }
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+    public JButton getJButtonE() {
+        return btnE;
+    }
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
+    public JButton getJButtonF() {
+        return btnF;
+    }
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
+    public JButton getJButtonG() {
+        return btnG;
+    }
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton12ActionPerformed
+    public JButton getJButtonH() {
+        return btnH;
+    }
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton13ActionPerformed
+    public JButton getJButtonI() {
+        return btnI;
+    }
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton14ActionPerformed
+    public JButton getJButtonJ() {
+        return btnJ;
+    }
 
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton15ActionPerformed
+    public JButton getJButtonK() {
+        return btnK;
+    }
 
-    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton16ActionPerformed
+    public JButton getJButtonL() {
+        return btnL;
+    }
 
-    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton17ActionPerformed
+    public JButton getJButtonM() {
+        return btnM;
+    }
 
-    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton18ActionPerformed
+    public JButton getJButtonN() {
+        return btnN;
+    }
 
-    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton19ActionPerformed
+    public JButton getJButtonO() {
+        return btnO;
+    }
 
-    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton20ActionPerformed
+    public JButton getJButtonP() {
+        return btnP;
+    }
 
-    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton21ActionPerformed
+    public JButton getJButtonQ() {
+        return btnQ;
+    }
 
-    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton22ActionPerformed
+    public JButton getJButtonR() {
+        return btnR;
+    }
 
-    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton23ActionPerformed
+    public JButton getJButtonS() {
+        return btnS;
+    }
 
-    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton24ActionPerformed
+    public JButton getJButtonT() {
+        return btnT;
+    }
 
-    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton25ActionPerformed
+    public JButton getJButtonU() {
+        return btnU;
+    }
 
-    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
+    public JButton getJButtonV() {
+        return btnV;
+    }
+
+    public JButton getJButtonW() {
+        return btnW;
+    }
+
+    public JButton getJButtonX() {
+        return btnX;
+    }
+
+    public JButton getJButtonY() {
+        return btnY;
+    }
+
+    public JButton getJButtonZ() {
+        return btnZ;
+    }
+
+    private void btnZActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton26ActionPerformed
+    }//GEN-LAST:event_btnZActionPerformed
+
+    private void btnAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAActionPerformed
+
+    private void btnBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBActionPerformed
+
+    private void btnCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCActionPerformed
+
+    private void btnDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDActionPerformed
+
+    private void btnEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEActionPerformed
+
+    private void btnFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFActionPerformed
+
+    private void btnGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGActionPerformed
+
+    private void btnHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHActionPerformed
+
+    private void btnIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIActionPerformed
+
+    private void btnJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnJActionPerformed
+
+    private void btnKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnKActionPerformed
+
+    private void btnLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLActionPerformed
+
+    private void btnMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMActionPerformed
+
+    private void btnNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNActionPerformed
+
+    private void btnOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOActionPerformed
+
+    private void btnPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPActionPerformed
+
+    private void btnQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnQActionPerformed
+
+    private void btnRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRActionPerformed
+
+    private void btnSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSActionPerformed
+
+    private void btnTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTActionPerformed
+
+    private void btnUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUActionPerformed
+
+    private void btnVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVActionPerformed
+
+    private void btnWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnWActionPerformed
+
+    private void btnXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnXActionPerformed
+
+    private void btnYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnYActionPerformed
+
+    private void btnTraduccirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraduccirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTraduccirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -584,33 +698,34 @@ public final class MainGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnA;
+    private javax.swing.JButton btnB;
+    private javax.swing.JButton btnC;
+    private javax.swing.JButton btnD;
+    private javax.swing.JButton btnE;
+    private javax.swing.JButton btnF;
+    private javax.swing.JButton btnG;
+    private javax.swing.JButton btnH;
+    private javax.swing.JButton btnI;
+    private javax.swing.JButton btnJ;
+    private javax.swing.JButton btnK;
+    private javax.swing.JButton btnL;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnM;
+    private javax.swing.JButton btnN;
+    private javax.swing.JButton btnO;
+    private javax.swing.JButton btnP;
+    private javax.swing.JButton btnQ;
+    private javax.swing.JButton btnR;
+    private javax.swing.JButton btnS;
+    private javax.swing.JButton btnT;
     private javax.swing.JButton btnTraduccir;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
-    private javax.swing.JButton jButton24;
-    private javax.swing.JButton jButton25;
-    private javax.swing.JButton jButton26;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton btnU;
+    private javax.swing.JButton btnV;
+    private javax.swing.JButton btnW;
+    private javax.swing.JButton btnX;
+    private javax.swing.JButton btnY;
+    private javax.swing.JButton btnZ;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

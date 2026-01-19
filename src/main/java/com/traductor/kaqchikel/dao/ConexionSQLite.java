@@ -21,12 +21,12 @@ public class ConexionSQLite {
         return conexion;
     }
 
-    public static void main(String[] args) {
-        var conexion = ConexionSQLite.getConexion();
-        if (conexion != null) {
-            System.out.println("Conexión exitosa" + conexion);
-        } else {
-            System.out.println("Error al conectar");
-        }
-    }
+//    public static void main(String[] args) {
+//        var conexion = ConexionSQLite.getConexion();
+//        if (conexion != null) {
+//            System.out.println("Conexión exitosa" + conexion);
+//        } else {
+//            System.out.println("Error al conectar");
+//        }
+//    }
 }
