@@ -11,7 +11,6 @@ public class ConexionSQLite {
         var baseDatos = "Traductor Kaqchikel";
 
         try {
-            // Cargar el driver JDBC de SQLite
             Class.forName("org.sqlite.JDBC");
             conexion = DriverManager.getConnection(url);
         } catch (Exception e) {

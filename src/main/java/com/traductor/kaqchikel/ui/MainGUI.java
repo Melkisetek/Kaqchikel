@@ -1,22 +1,30 @@
 package com.traductor.kaqchikel.ui;
 
+import com.traductor.kaqchikel.controller.Busqueda;
 import com.traductor.kaqchikel.controller.DiccionarioController;
 import com.traductor.kaqchikel.controller.FiltrarPalabra;
+import com.traductor.kaqchikel.dao.PalabraDAOimpl;
+import com.traductor.kaqchikel.model.Palabra;
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public final class MainGUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form main
-     */
     public MainGUI() {
         initComponents();
         setLocationRelativeTo(null);
         DiccionarioController diccionarioController = new DiccionarioController(this);
         FiltrarPalabra filtrarPalabra = new FiltrarPalabra(this);
+        Busqueda busqueda = new Busqueda(this);
     }
 
     /**
@@ -28,6 +36,9 @@ public final class MainGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane3 = new javax.swing.JScrollPane();
+        lista = new javax.swing.JList<>();
+        popupMenu = new javax.swing.JPopupMenu();
         jPanel1 = new javax.swing.JPanel();
         btnLimpiar = new javax.swing.JButton();
         txtField = new javax.swing.JTextField();
@@ -66,6 +77,15 @@ public final class MainGUI extends javax.swing.JFrame {
         btnY = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
 
+        lista.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jScrollPane3.setViewportView(lista);
+
+        popupMenu.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
+        popupMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        popupMenu.setFocusable(false);
+        popupMenu.setMaximumSize(new java.awt.Dimension(3, 9));
+        popupMenu.setMinimumSize(new java.awt.Dimension(3, 9));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Traductor Kaqchikel");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -82,20 +102,30 @@ public final class MainGUI extends javax.swing.JFrame {
         jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 90, 46));
 
         txtField.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        txtField.setName(""); // NOI18N
         txtField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(txtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 289, 46));
+        txtField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtFieldKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtFieldKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 20, 320, 46));
 
+        btnTraduccir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search_icon.png"))); // NOI18N
         btnTraduccir.setText("TRADUCIR");
         btnTraduccir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTraduccirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnTraduccir, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 114, 46));
+        jPanel1.add(btnTraduccir, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 130, 46));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 1080, 100));
 
@@ -426,7 +456,6 @@ public final class MainGUI extends javax.swing.JFrame {
 
     private void txtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldActionPerformed
 
-
     }//GEN-LAST:event_txtFieldActionPerformed
 
     // Getters  (muy importante) 
@@ -445,6 +474,17 @@ public final class MainGUI extends javax.swing.JFrame {
     public JTextArea getTextArea() {
         return txtArea;
     }
+// menu segerencias
+
+    public JList<String> getLista() {
+        return lista;
+    }
+
+    public JPopupMenu getPopupMenu() {
+        return popupMenu;
+    }
+    
+
 
     // A-Z
     public JButton getJButtonA() {
@@ -659,6 +699,14 @@ public final class MainGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTraduccirActionPerformed
 
+    private void txtFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFieldKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFieldKeyPressed
+
+    private void txtFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFieldKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFieldKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -732,7 +780,10 @@ public final class MainGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
+    private javax.swing.JList<String> lista;
+    private javax.swing.JPopupMenu popupMenu;
     private javax.swing.JTextArea txtArea;
     private javax.swing.JTextField txtField;
     // End of variables declaration//GEN-END:variables

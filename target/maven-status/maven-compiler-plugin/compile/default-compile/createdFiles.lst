@@ -4,10 +4,13 @@ com/traductor/kaqchikel/model/Palabra.class
 com/traductor/kaqchikel/ui/MainGUI$4.class
 com/traductor/kaqchikel/ui/MainGUI$24.class
 com/traductor/kaqchikel/controller/FiltrarPalabra.class
+com/traductor/kaqchikel/controller/Busqueda.class
 com/traductor/kaqchikel/ui/MainGUI$8.class
 com/traductor/kaqchikel/ui/MainGUI$14.class
+com/traductor/kaqchikel/controller/Busqueda$2.class
 com/traductor/kaqchikel/ui/MainGUI$28.class
 com/traductor/kaqchikel/ui/MainGUI$18.class
+com/traductor/kaqchikel/controller/Busqueda$1.class
 com/traductor/kaqchikel/ui/MainGUI$23.class
 com/traductor/kaqchikel/ui/MainGUI$13.class
 com/traductor/kaqchikel/ui/MainGUI$19.class
@@ -29,6 +32,7 @@ com/traductor/kaqchikel/ui/MainGUI$5.class
 com/traductor/kaqchikel/controller/DiccionarioController.class
 com/traductor/kaqchikel/dao/PalabraDAOimpl.class
 com/traductor/kaqchikel/ui/MainGUI$9.class
+com/traductor/kaqchikel/ui/MainGUI$32.class
 com/traductor/kaqchikel/ui/MainGUI$22.class
 com/traductor/kaqchikel/ui/MainGUI$3.class
 com/traductor/kaqchikel/ui/MainGUI$1.class

@@ -8,5 +8,6 @@ public interface IPalabraDAO {
     Palabra buscarTermino(Palabra palabra);
     List<Palabra> listarPalabra();
     List<Palabra> filtrarListaPorLetra(Palabra filtrarPalabra);
+    List<Palabra> obtenerSugerencias(Palabra texto);
     
 }

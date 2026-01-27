@@ -2,7 +2,6 @@ package com.traductor.kaqchikel.dao;
 
 import com.traductor.kaqchikel.model.Palabra;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -46,7 +45,9 @@ public class PalabraDAOimpl implements IPalabraDAO {
         PreparedStatement ps;
         ResultSet rs;
         var con = ConexionSQLite.getConexion();
-        var sql = "SELECT * FROM traduccion WHERE LOWER(texto_espanol) LIKE  LOWER(?)"; // insensible a mayúsculas/minúsculas
+        // insensible a mayúsculas/minúsculas, eliminar espacios inicio, final.
+        var sql = "SELECT * FROM traduccion "
+                        + "WHERE LOWER(TRIM(texto_espanol)) LIKE LOWER(TRIM(?))"; 
         try {
             ps = con.prepareStatement(sql);
             ps.setString(1, palabraBuscar.getEspañol());
@@ -68,9 +69,9 @@ public class PalabraDAOimpl implements IPalabraDAO {
 
         return palabraBuscar;
     }
-    
+
     @Override
-    public List<Palabra> filtrarListaPorLetra(Palabra filtrar){
+    public List<Palabra> filtrarListaPorLetra(Palabra filtrar) {
         List<Palabra> listaFiltrada = new ArrayList<>();
         PreparedStatement ps;
         ResultSet rs;
@@ -80,7 +81,7 @@ public class PalabraDAOimpl implements IPalabraDAO {
             ps = con.prepareStatement(sql);
             ps.setString(1, filtrar.getEspañol()); // Regex*
             rs = ps.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {
                 Palabra lista = new Palabra();
                 lista.setId(rs.getInt("id"));
                 lista.setEspañol(rs.getString("texto_espanol"));
@@ -89,16 +90,45 @@ public class PalabraDAOimpl implements IPalabraDAO {
                 listaFiltrada.add(lista);
             }
         } catch (SQLException e) {
-            System.out.println("Error al filtrar la lista: "+e.getMessage());
-        }finally{
+            System.out.println("Error al filtrar la lista: " + e.getMessage());
+        } finally {
             try {
                 con.close();
             } catch (SQLException ex) {
-                System.out.println("Error al cerrar conexión: "+ex.getMessage());
+                System.out.println("Error al cerrar conexión: " + ex.getMessage());
             }
         }
-        
+
         return listaFiltrada;
+    }
+
+    @Override
+    public List<Palabra> obtenerSugerencias(Palabra palabra) {
+        List<Palabra> sugerencias = new ArrayList<>();
+        PreparedStatement ps;
+        ResultSet rs;
+        Connection con = ConexionSQLite.getConexion();
+        String sql = "SELECT texto_espanol FROM traduccion WHERE texto_espanol LIKE ? LIMIT 10";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, palabra.getEspañol() + "%"); //autocomplete
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Palabra palabraBuscar = new Palabra();
+                palabraBuscar.setEspañol(rs.getString("texto_espanol"));
+                sugerencias.add(palabraBuscar);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al Obtener Segerencias: " + e);
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println("Error al cerrar la conexión: " + ex);
+            }
+        }
+
+        return sugerencias;
     }
 
     public static void main(String[] args) {
@@ -108,7 +138,7 @@ public class PalabraDAOimpl implements IPalabraDAO {
 //        var palabras = palabraDao.listarPalabra();
 //        palabras.forEach(System.out::println);
 
-        // Busqueda por nombre
+        // *** Busqueda por nombre *** 
 //        var palabra = new Palabra("Abeja");
 //        System.out.println("Palabra antes de la busqueda: " + palabra);
 //        var encontrado = palabraDao.buscarTermino(palabra);
@@ -118,7 +148,6 @@ public class PalabraDAOimpl implements IPalabraDAO {
 //        } else {
 //            System.out.println("NO SE ENCONTRO: " + palabra.getEspañol());
 //        }
-
         // *** filtrarListaPorLetra  ***
 //        String regex = "[R]*";
 //        Palabra palabra = new Palabra(regex);
@@ -128,6 +157,18 @@ public class PalabraDAOimpl implements IPalabraDAO {
 //            return;
 //        }
 //        filtrarPalabraLista.forEach(System.out::println);
+
+        // *** Mostrar Sugerencias de Busqueda***
+//        String palabraBuscar = "ab";
+//        Palabra palabra = new Palabra(palabraBuscar);
+//        var mostrarSegerencia = palabraDao.obtenerSugerencias(palabra);
+//        if (palabra.getEspañol().isEmpty()) {
+//            System.out.println("Cadena vacía, ingrese una letra");
+//            return;
+//        }
+//        
+//        mostrarSegerencia.forEach(System.out::println);
+
     }
 
 }

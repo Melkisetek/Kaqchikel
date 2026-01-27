@@ -1,5 +1,4 @@
 package com.traductor.kaqchikel;
-
 import com.traductor.kaqchikel.ui.MainGUI;
 import java.awt.EventQueue;
 import javax.swing.UIManager;
