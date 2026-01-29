@@ -1,4 +1,5 @@
 package com.traductor.kaqchikel.controller;
+
 import com.traductor.kaqchikel.dao.PalabraDAOimpl;
 import com.traductor.kaqchikel.model.Palabra;
 import com.traductor.kaqchikel.ui.MainGUI;
@@ -8,11 +9,13 @@ import java.util.List;
 import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import util.StringUtilidad;
 
 public class Busqueda {
 
     private MainGUI vista;
     private PalabraDAOimpl daoImp;
+    private Timer timer;
 
     public Busqueda(MainGUI vista) {
         this.vista = vista;
@@ -20,7 +23,7 @@ public class Busqueda {
         iniciarEventos();
         configuraPopup();  // solo una vez
     }
-    
+
 // Se ejecuta UNA SOLA VEZ
     private void configuraPopup() {
 // USAMOS los componentes del diseñador
@@ -30,15 +33,22 @@ public class Busqueda {
 
     // Escucha escritura en el JTextField
     private void iniciarEventos() {
+
+        // Timer para no consultar la BD en cada tecla
+        timer = new Timer(200, e -> mostrarSugerencias());
+        timer.setRepeats(false);
+
         vista.getTxtBuscar().getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                mostrarSugerencias();
+                // mostrarSugerencias();
+                timer.restart();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                mostrarSugerencias();
+                //mostrarSugerencias();
+                timer.restart();
             }
 
             @Override
@@ -64,14 +74,14 @@ public class Busqueda {
 
     private void mostrarSugerencias() {
         String texto = vista.getTxtBuscar().getText().trim();
-        
-        if (texto.isEmpty()) {
+        // Limpiamos la entrada del usuario antes de enviarla
+        String criterioLimpio = StringUtilidad.normalizar(texto);
+        if (criterioLimpio.isEmpty()) {
             vista.getPopupMenu().setVisible(false);
             return;
         }
-        
-        
-        List<Palabra> sugerencias = this.daoImp.obtenerSugerencias(new Palabra(texto));
+
+        List<Palabra> sugerencias = this.daoImp.obtenerSugerencias(new Palabra(criterioLimpio));
 
         if (sugerencias.isEmpty()) {
             vista.getPopupMenu().setVisible(false);
@@ -80,7 +90,7 @@ public class Busqueda {
 
         // Convertimos Palabra → String
         String[] datos = sugerencias.stream()
-                .map(Palabra::getEspañol) // AJUSTA según tu modelo
+                .map(Palabra::getEspañol) 
                 .toArray(String[]::new);
 
         vista.getLista().setListData(datos);

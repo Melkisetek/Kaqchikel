@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.sqlite.Function;
+import util.StringUtilidad;
 
 public class PalabraDAOimpl implements IPalabraDAO {
 
@@ -16,6 +18,7 @@ public class PalabraDAOimpl implements IPalabraDAO {
         PreparedStatement ps;
         ResultSet rs;
         Connection con = ConexionSQLite.getConexion();
+
         var sql = "SELECT * FROM traduccion ORDER BY id";
         try {
             ps = con.prepareStatement(sql);
@@ -42,12 +45,14 @@ public class PalabraDAOimpl implements IPalabraDAO {
 
     @Override
     public Palabra buscarTermino(Palabra palabraBuscar) {
+
         PreparedStatement ps;
         ResultSet rs;
         var con = ConexionSQLite.getConexion();
         // insensible a mayúsculas/minúsculas, eliminar espacios inicio, final.
-        var sql = "SELECT * FROM traduccion "
-                        + "WHERE LOWER(TRIM(texto_espanol)) LIKE LOWER(TRIM(?))"; 
+        var sql = "SELECT * FROM traduccion WHERE LOWER(TRIM(texto_espanol)) LIKE LOWER(TRIM(?))";
+//            var sql = "SELECT * FROM traduccion "
+//                    + "WHERE NORMALIZAR_SQL(texto_espanol) LIKE NORMALIZAR_SQL(?)";
         try {
             ps = con.prepareStatement(sql);
             ps.setString(1, palabraBuscar.getEspañol());
@@ -58,7 +63,7 @@ public class PalabraDAOimpl implements IPalabraDAO {
                 palabraBuscar.setKaqchikel(rs.getString("texto_kaqchikel"));
             }
         } catch (Exception e) {
-            System.out.println("Error al recuperar cliente:  " + e.getMessage());
+            System.out.println("Error al buscar palabra:  " + e.getMessage());
         } finally {
             try {
                 con.close();
@@ -104,31 +109,45 @@ public class PalabraDAOimpl implements IPalabraDAO {
 
     @Override
     public List<Palabra> obtenerSugerencias(Palabra palabra) {
-        List<Palabra> sugerencias = new ArrayList<>();
-        PreparedStatement ps;
+        List<Palabra> resultados = new ArrayList<>();
+        PreparedStatement pstmt;
         ResultSet rs;
-        Connection con = ConexionSQLite.getConexion();
-        String sql = "SELECT texto_espanol FROM traduccion WHERE texto_espanol LIKE ? LIMIT 10";
+        // 1. Abrir la conexión
+        Connection conn = ConexionSQLite.getConexion();
+        String sql = "SELECT texto_espanol FROM traduccion WHERE NORMALIZAR_SQL(texto_espanol) LIKE ? LIMIT 10";
         try {
-            ps = con.prepareStatement(sql);
-            ps.setString(1, palabra.getEspañol() + "%"); //autocomplete
-            rs = ps.executeQuery();
+
+            // 2. REGISTRAR LA FUNCIÓN (Obligatorio cada vez que se abre la conexión)
+            Function.create(conn, "NORMALIZAR_SQL", new Function() {
+                @Override
+                protected void xFunc() throws SQLException {
+                    String valor = value_text(0);
+                    // Usamos tu StringUtilidad para limpiar el dato de la BD
+                    result(StringUtilidad.normalizar(valor));
+                }
+            });
+            pstmt = conn.prepareStatement(sql);
+
+            // Enviamos con comodines para que encuentre "Álbum" al escribir "albu"
+            pstmt.setString(1, palabra.getEspañol() + "%");
+            rs = pstmt.executeQuery();
             while (rs.next()) {
                 Palabra palabraBuscar = new Palabra();
+                // Aquí recuperamos el valor ORIGINAL con tildes y mayúsculas
                 palabraBuscar.setEspañol(rs.getString("texto_espanol"));
-                sugerencias.add(palabraBuscar);
+                resultados.add(palabraBuscar);
             }
-        } catch (Exception e) {
+
+        } catch (SQLException e) {
             System.out.println("Error al Obtener Segerencias: " + e);
         } finally {
             try {
-                con.close();
+                conn.close();
             } catch (SQLException ex) {
                 System.out.println("Error al cerrar la conexión: " + ex);
             }
         }
-
-        return sugerencias;
+        return resultados;
     }
 
     public static void main(String[] args) {
@@ -157,7 +176,6 @@ public class PalabraDAOimpl implements IPalabraDAO {
 //            return;
 //        }
 //        filtrarPalabraLista.forEach(System.out::println);
-
         // *** Mostrar Sugerencias de Busqueda***
 //        String palabraBuscar = "ab";
 //        Palabra palabra = new Palabra(palabraBuscar);
@@ -166,9 +184,8 @@ public class PalabraDAOimpl implements IPalabraDAO {
 //            System.out.println("Cadena vacía, ingrese una letra");
 //            return;
 //        }
-//        
+//
 //        mostrarSegerencia.forEach(System.out::println);
-
     }
 
 }

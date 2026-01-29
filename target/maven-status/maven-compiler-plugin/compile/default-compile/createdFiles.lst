@@ -26,6 +26,7 @@ com/traductor/kaqchikel/App.class
 com/traductor/kaqchikel/ui/MainGUI$30.class
 com/traductor/kaqchikel/ui/MainGUI$25.class
 com/traductor/kaqchikel/ui/MainGUI$17.class
+com/traductor/kaqchikel/dao/PalabraDAOimpl$1.class
 com/traductor/kaqchikel/ui/MainGUI$27.class
 com/traductor/kaqchikel/ui/MainGUI.class
 com/traductor/kaqchikel/ui/MainGUI$5.class
@@ -35,6 +36,7 @@ com/traductor/kaqchikel/ui/MainGUI$9.class
 com/traductor/kaqchikel/ui/MainGUI$32.class
 com/traductor/kaqchikel/ui/MainGUI$22.class
 com/traductor/kaqchikel/ui/MainGUI$3.class
+util/StringUtilidad.class
 com/traductor/kaqchikel/ui/MainGUI$1.class
 com/traductor/kaqchikel/ui/MainGUI$15.class
 com/traductor/kaqchikel/ui/MainGUI$12.class

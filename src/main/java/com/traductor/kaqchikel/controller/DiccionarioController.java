@@ -8,6 +8,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
+import util.StringUtilidad;
+
 
 public class DiccionarioController {
 
@@ -45,6 +47,7 @@ public class DiccionarioController {
 
     private void buscar() {
         JTextArea txtArea = (JTextArea) vista.getTextArea();
+        // 1. Obtener el texto que escribió el usuario en la interfaz
         String buscar = vista.getTxtBuscar().getText().trim();
         
         if (buscar.isEmpty()) {
