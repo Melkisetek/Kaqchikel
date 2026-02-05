@@ -129,7 +129,7 @@ public class PalabraDAOimpl implements IPalabraDAO {
             pstmt = conn.prepareStatement(sql);
 
             // Enviamos con comodines para que encuentre "Álbum" al escribir "albu"
-            pstmt.setString(1, palabra.getEspañol() + "%");
+            pstmt.setString(1,"%"+ palabra.getEspañol() + "%");
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 Palabra palabraBuscar = new Palabra();
