@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.sqlite.Function;
-import util.StringUtilidad;
+import com.traductor.kaqchikel.util.StringUtilidad;
 
 public class PalabraDAOimpl implements IPalabraDAO {
 

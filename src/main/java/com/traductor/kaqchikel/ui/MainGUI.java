@@ -16,6 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.tree.DefaultTreeCellEditor;
 
 public final class MainGUI extends javax.swing.JFrame {
 
@@ -25,6 +26,7 @@ public final class MainGUI extends javax.swing.JFrame {
         DiccionarioController diccionarioController = new DiccionarioController(this);
         FiltrarPalabra filtrarPalabra = new FiltrarPalabra(this);
         Busqueda busqueda = new Busqueda(this);
+
     }
 
     /**
@@ -102,6 +104,7 @@ public final class MainGUI extends javax.swing.JFrame {
         jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 90, 46));
 
         txtField.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        txtField.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txtField.setName(""); // NOI18N
         txtField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,7 +147,7 @@ public final class MainGUI extends javax.swing.JFrame {
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
-                {null, null, ""},
+                {null, null, null},
                 {null, null, null},
                 {null, null, null}
             },
@@ -160,7 +163,7 @@ public final class MainGUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTable1.setRowHeight(30);
         jScrollPane2.setViewportView(jTable1);
 

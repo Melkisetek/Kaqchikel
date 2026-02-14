@@ -1,4 +1,4 @@
-package util;
+package com.traductor.kaqchikel.util;
 
 import java.text.Normalizer;
 import java.util.regex.Pattern;

@@ -13,6 +13,7 @@ com/traductor/kaqchikel/ui/MainGUI$18.class
 com/traductor/kaqchikel/controller/Busqueda$1.class
 com/traductor/kaqchikel/ui/MainGUI$23.class
 com/traductor/kaqchikel/ui/MainGUI$13.class
+com/traductor/kaqchikel/util/StringUtilidad.class
 com/traductor/kaqchikel/ui/MainGUI$19.class
 com/traductor/kaqchikel/ui/MainGUI$29.class
 com/traductor/kaqchikel/ui/MainGUI$31.class
@@ -36,7 +37,6 @@ com/traductor/kaqchikel/ui/MainGUI$9.class
 com/traductor/kaqchikel/ui/MainGUI$32.class
 com/traductor/kaqchikel/ui/MainGUI$22.class
 com/traductor/kaqchikel/ui/MainGUI$3.class
-util/StringUtilidad.class
 com/traductor/kaqchikel/ui/MainGUI$1.class
 com/traductor/kaqchikel/ui/MainGUI$15.class
 com/traductor/kaqchikel/ui/MainGUI$12.class

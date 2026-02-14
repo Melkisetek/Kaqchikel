@@ -9,7 +9,7 @@ import java.util.List;
 import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import util.StringUtilidad;
+import com.traductor.kaqchikel.util.StringUtilidad;
 
 public class Busqueda {
 

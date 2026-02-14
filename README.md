@@ -52,15 +52,7 @@ Una aplicación de escritorio desarrollada en Java Swing con Maven.
 
 ### Estructura del Proyecto
 
-src/main/java/com/traductor/kaqchikel/
-|── App.java              # Punto de entrada
-├── ui/                   # Componentes de interfaz
-│   ├── MainGUI.java    # Ventana principal
-|
-├── model/               # Modelos de datos
-├── controllers/          # Controladores
-└── utils/               # Utilidades
-│── dao/                 # Objeto de acceso a datos
+<img title="" src="docs/images/diagrams/estructure.png">
 
 ### ⚙️ Configuración
 
