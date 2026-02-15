@@ -13,6 +13,7 @@ public class App {
         try {
             // Usar el look and feel del sistema
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+         
         } catch (Exception e) {
             e.printStackTrace();
         }

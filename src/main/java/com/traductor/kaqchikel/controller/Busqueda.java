@@ -1,5 +1,6 @@
 package com.traductor.kaqchikel.controller;
 
+import com.traductor.kaqchikel.dao.IPalabraDAO;
 import com.traductor.kaqchikel.dao.PalabraDAOimpl;
 import com.traductor.kaqchikel.model.Palabra;
 import com.traductor.kaqchikel.ui.MainGUI;
@@ -10,8 +11,10 @@ import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import com.traductor.kaqchikel.util.StringUtilidad;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
-public class Busqueda {
+public final class Busqueda {
 
     private MainGUI vista;
     private PalabraDAOimpl daoImp;
@@ -25,10 +28,13 @@ public class Busqueda {
     }
 
 // Se ejecuta UNA SOLA VEZ
-    private void configuraPopup() {
+    public void configuraPopup() {
+
 // USAMOS los componentes del diseñador
         //  vista.getPopupMenu().add(new JScrollPane(vista.getLista()));
         vista.getPopupMenu().add(vista.getLista());
+        
+
     }
 
     // Escucha escritura en el JTextField
@@ -67,7 +73,9 @@ public class Busqueda {
                 if (seleccion != null) {
                     vista.getTxtBuscar().setText(seleccion);
                     vista.getPopupMenu().setVisible(false);
+                    buscar();
                 }
+                
             }
         });
     }
@@ -90,7 +98,7 @@ public class Busqueda {
 
         // Convertimos Palabra → String
         String[] datos = sugerencias.stream()
-                .map(Palabra::getEspañol) 
+                .map(Palabra::getEspañol)
                 .toArray(String[]::new);
 
         vista.getLista().setListData(datos);
@@ -101,6 +109,23 @@ public class Busqueda {
                 0,
                 vista.getTxtBuscar().getHeight()
         );
+    }
+    
+    public void buscar() {
+        JTextArea txtArea = (JTextArea) vista.getTextArea();
+        // 1. Obtener el texto que escribió el usuario en la interfaz
+        String buscar = vista.getTxtBuscar().getText().trim();
+
+        IPalabraDAO buscarPalabra = new PalabraDAOimpl();
+        Palabra palabra = new Palabra(buscar);
+        var encontrado = buscarPalabra.buscarTermino(palabra);
+
+        if (encontrado.getKaqchikel() != null) {
+            txtArea.setText(" " + "Español:  " + palabra.getEspañol() + "\n" + " " + "Kaqchikel:  " + palabra.getKaqchikel());
+            //txtArea.setText(palabra.toString());
+        } else {
+            JOptionPane.showMessageDialog(null, "Error de busqueda");
+        }
     }
 
 }

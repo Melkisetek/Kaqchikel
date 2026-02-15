@@ -1,22 +1,15 @@
 package com.traductor.kaqchikel.ui;
 
 import com.traductor.kaqchikel.controller.Busqueda;
+import com.traductor.kaqchikel.controller.CargarDatosEnFormulario;
 import com.traductor.kaqchikel.controller.DiccionarioController;
 import com.traductor.kaqchikel.controller.FiltrarPalabra;
-import com.traductor.kaqchikel.dao.PalabraDAOimpl;
-import com.traductor.kaqchikel.model.Palabra;
-import java.awt.Color;
-import javax.swing.BorderFactory;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
-import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.tree.DefaultTreeCellEditor;
 
 public final class MainGUI extends javax.swing.JFrame {
 
@@ -26,6 +19,7 @@ public final class MainGUI extends javax.swing.JFrame {
         DiccionarioController diccionarioController = new DiccionarioController(this);
         FiltrarPalabra filtrarPalabra = new FiltrarPalabra(this);
         Busqueda busqueda = new Busqueda(this);
+        CargarDatosEnFormulario cargarDatosEnFormulario = new CargarDatosEnFormulario(this);
 
     }
 

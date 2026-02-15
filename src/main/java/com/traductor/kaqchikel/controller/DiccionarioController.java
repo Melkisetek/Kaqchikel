@@ -9,11 +9,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 
-
 public class DiccionarioController {
 
     private MainGUI vista;
     private PalabraDAOimpl dao;
+    private Busqueda busqueda;
 
     public DiccionarioController(MainGUI vista) {
         this.vista = vista;
@@ -44,11 +44,11 @@ public class DiccionarioController {
         vista.getTxtBuscar().addActionListener(i -> buscar());
     }
 
-    private void buscar() {
+    public void buscar() {
         JTextArea txtArea = (JTextArea) vista.getTextArea();
         // 1. Obtener el texto que escribió el usuario en la interfaz
         String buscar = vista.getTxtBuscar().getText().trim();
-        
+
         if (buscar.isEmpty()) {
             JOptionPane.showMessageDialog(null,
                     "Por favor, ingrese un texto para buscar",
