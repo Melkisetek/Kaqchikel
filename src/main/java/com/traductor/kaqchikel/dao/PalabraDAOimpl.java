@@ -114,7 +114,7 @@ public class PalabraDAOimpl implements IPalabraDAO {
         ResultSet rs;
         // 1. Abrir la conexión
         Connection conn = ConexionSQLite.getConexion();
-        String sql = "SELECT texto_espanol FROM traduccion WHERE NORMALIZAR_SQL(texto_espanol) LIKE ? LIMIT 10";
+        String sql = "SELECT texto_espanol FROM traduccion WHERE NORMALIZAR_SQL(texto_espanol) LIKE ? LIMIT 12";
         try {
 
             // 2. REGISTRAR LA FUNCIÓN (Obligatorio cada vez que se abre la conexión)
@@ -129,12 +129,12 @@ public class PalabraDAOimpl implements IPalabraDAO {
             pstmt = conn.prepareStatement(sql);
 
             // Enviamos con comodines para que encuentre "Álbum" al escribir "albu"
-            pstmt.setString(1,"%"+ palabra.getEspañol() + "%");
+            pstmt.setString(1, palabra.getEspañol()+"%");
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 Palabra palabraBuscar = new Palabra();
                 // Aquí recuperamos el valor ORIGINAL con tildes y mayúsculas
-                palabraBuscar.setEspañol(rs.getString("texto_espanol"));
+                palabraBuscar.setEspañol(rs.getString("texto_espanol") );
                 resultados.add(palabraBuscar);
             }
 
