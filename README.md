@@ -1,4 +1,20 @@
-# Traductor Español a Kaqchikel
+<h1 align="center">Traductor Español a Kaqchikel</h1>
+
+<div align="center">
+  <sub>Disponible para Linux, macOS and Windows.</sub>
+</div>
+
+<div align="center">
+  <h3>
+    <a href="https://github.com/Melkisetek/Kaqchikel">
+      Website
+    </a>
+    <span> | </span>
+    <a href="https://github.com/Melkisetek/Kaqchikel/releases/tag/V1.1">
+      Downloads
+    </a>
+  </h3>
+</div>
 
 ## Descripción
 
@@ -52,7 +68,7 @@ Una aplicación de escritorio desarrollada en Java Swing con Maven.
 
 ### Estructura del Proyecto
 
-<img title="" src="docs/images/diagrams/estructure.png">
+<img title="" src="docs/images/estructure/estructure.png">
 
 ### ⚙️ Configuración
 
