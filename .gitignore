@@ -3,7 +3,7 @@
 ***docs/Comando
 ***docs/descripcion_traductor_kaqchikel.docx
 ***lib
-***target
+***target/
 
 
 
@@ -17,6 +17,7 @@
 
 # BlueJ files
 *.ctxt
+*Traductor_Kaqchikel*
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
